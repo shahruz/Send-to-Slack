@@ -1,4 +1,4 @@
-# Send to Slack plugin for Sketch.app
+# Send to Slack
 
 A simple plugin for [Sketch.app](http://bohemiancoding.com/sketch/) to directly share artboards to specific Slack groups, channels, or users.
 
