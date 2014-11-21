@@ -1,0 +1,8 @@
+#import 'utilities.js'
+#import 'api.js'
+
+if (getActiveToken() == false) {
+	requestAndSaveToken()
+}
+
+exportArtboardsAndSendTo("USLACKBOT")

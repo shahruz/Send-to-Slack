@@ -1,0 +1,12 @@
+#import 'utilities.js'
+#import 'api.js'
+
+if (getActiveToken() == false) {
+	requestAndSaveToken()
+}
+
+var groupNames = getGroupNames()
+var groupIDs = getGroupIDs()
+var choice = createSelect('Choose a group...', groupNames, nil)
+
+exportArtboardsAndSendTo(groupIDs[choice])

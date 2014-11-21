@@ -1,0 +1,13 @@
+#import 'utilities.js'
+#import 'api.js'
+
+if (getActiveToken() == false) {
+	requestAndSaveToken()
+}
+
+var channelNames = getChannelNames()
+var channelIDs = getChannelIDs()
+
+var choice = createSelect('Choose a channel...', channelNames, nil)
+
+exportArtboardsAndSendTo(channelIDs[choice])

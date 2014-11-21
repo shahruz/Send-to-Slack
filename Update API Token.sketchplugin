@@ -1,0 +1,4 @@
+#import 'utilities.js'
+#import 'api.js'
+#import <UIKit/UIKit.h>
+requestAndSaveToken()
