@@ -29,6 +29,34 @@ function getActiveToken() {
 	}
 }
 
+function getUserNames() {
+	var token = getActiveToken();
+	var response = getJSON(rootURL + "users.list?token=" + token);
+	var userNames = [];
+	for (var i = 0; i < response.members.count(); i++) {
+		var user = response.members[i]
+		userNames.push(user.name + " (" + user.real_name + ")")
+	}
+	return userNames;
+}
+
+function getUserIDs() {
+	var token = getActiveToken();
+	var response = getJSON(rootURL + "users.list?token=" + token);
+	var userIDs = [];
+	for (var i = 0; i < response.members.count(); i++) {
+		var user = response.members[i]
+		userIDs.push(user.id)
+	}
+	return userIDs;
+}
+
+function openIMAndSend(userID) {
+	var token = getActiveToken();
+	var response = getJSON(rootURL + "im.open?token=" + token + "&user=" + userID);
+	exportArtboardsAndSendTo(response.channel.id)
+}
+
 function getChannelNames() {
 	var token = getActiveToken();
 	var response = getJSON(rootURL + "channels.list?token=" + token + "&exclude_archived=1");
@@ -95,38 +123,4 @@ function postFile(path, recipient) {
 	var args = NSArray.arrayWithObjects("-F", "token=" + getActiveToken(), "-F", "file=@" + path, "-F", "channels=" + recipient, "https://slack.com/api/files.upload", nil);
 	task.setArguments(args);
     task.launch(); 
-    
-/*	Couldn't get this working! Try again later!
-	var image = NSData.dataWithContentsOfFile(NSString.stringWithString(path))
-	var request = NSMutableURLRequest.alloc().init()
-	var boundary = "0xKhTmLbOuNdArY";
-	var contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-	[request setValue:contentType forHTTPHeaderField: @"Content-Type"];
-// 	request.setURL(NSURL.URLWithString(rootURL + "files.upload"))
-	request.setURL(NSURL.URLWithString("http://localhost:8080"))	
-	request.setHTTPMethod("POST")
-	
-	var body = [NSMutableData data];
-
-	body.appendData(NSString.stringWithFormat("--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding))
-    body.appendData(NSString.stringWithString("Content-Disposition: form-data; name=\"token\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding))
-    body.appendData(NSString.stringWithFormat("%@\r\n", getActiveToken()).dataUsingEncoding(NSUTF8StringEncoding))
-
-	body.appendData(NSString.stringWithFormat("--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding))
-    body.appendData(NSString.stringWithString("Content-Disposition: form-data; name=\"content\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding))
-	body.appendData(NSString.stringWithString("Content-Type: image/png\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding))
-	body.appendData(image)
-	body.appendData(NSString.stringWithFormat("--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding))
-
-	request.setHTTPBody(body)	
-
-	log(image)
-	log(image.className())
-
-	var bodyString = NSString.alloc().initWithData_encoding(body, nil)
-	log(bodyString)
-	
-	var data = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, nil, nil)
-	log(NSString.alloc().initWithData_encoding(data, NSUTF8StringEncoding))
-*/
 }

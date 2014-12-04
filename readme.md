@@ -17,9 +17,7 @@ A simple plugin for [Sketch.app](http://bohemiancoding.com/sketch/) to directly 
 ![Usage](https://cldup.com/qNznqoP5aJ.gif)
 
 ## Known Issues / What's Next
-1. Send to Slackbot is not working as of Nov 21, 2014. Waiting for the Slack team to fix an API issue for this to get resolved.
-2. Options for sending directly to a user is on it's way.
-3. I'm looking into what else can be shared besides just artboards. If you have any suggestions, open an issue!
+1. I'm looking into what else can be shared besides just artboards. If you have any suggestions, open an issue!
 
 ## Feedback
 If you have any feedback of any kind, I'm most easily reachable on Twitter [@shahruz](https://twitter.com/shahruz).

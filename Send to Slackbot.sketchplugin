@@ -5,4 +5,4 @@ if (getActiveToken() == false) {
 	requestAndSaveToken()
 }
 
-exportArtboardsAndSendTo("USLACKBOT")
+openIMAndSend("USLACKBOT")
