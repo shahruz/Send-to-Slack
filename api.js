@@ -2,7 +2,7 @@ var rootURL = "https://slack.com/api/";
 var tokenPath = NSHomeDirectory() + "/.slackToken"
 
 function requestAndSaveToken() {
-	var token = [doc askForUserInput:"What is your API token? (https://api.slack.com/tokens)" initialValue:""]
+	var token = [doc askForUserInput:"What is your API token? (https://api.slack.com/web)" initialValue:""]
 	if (verifyAuth(token) == true) {
 		var fileManager = NSFileManager.defaultManager()
 		fileManager.createFileAtPath_contents_attributes(tokenPath, token, nil)
