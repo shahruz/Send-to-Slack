@@ -5,7 +5,7 @@ A simple plugin for [Sketch.app](http://bohemiancoding.com/sketch/) to directly 
 ## Installation
 1. [Download Sketch Toolbox](http://sketchtoolbox.com)
 2. Search for Send to Slack, click install.
-3. Grab your API token from https://api.slack.com.
+3. Grab your API token from https://api.slack.com/web.
 4. Go to Sketch->Plugins->Send to Slack->Update API token and paste in your API token.
 
 ## Usage
