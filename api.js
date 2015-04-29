@@ -107,13 +107,14 @@ function getGroupIDs() {
 
 
 function exportArtboardsAndSendTo(recipient) {
+	if (recipient == 0) return;
 	var loop = [selection objectEnumerator]
 	while (item = [loop nextObject]) {
 		if (item.className() == "MSArtboardGroup") {
 			var path = NSTemporaryDirectory() + item.name() + ".png"
 			[doc saveArtboardOrSlice:item toFile: path];
 			postFile(path, recipient)
-		}	
+		}
 	}
 }
 
@@ -122,5 +123,5 @@ function postFile(path, recipient) {
 	task.setLaunchPath("/usr/bin/curl");
 	var args = NSArray.arrayWithObjects("-F", "token=" + getActiveToken(), "-F", "file=@" + path, "-F", "channels=" + recipient, "https://slack.com/api/files.upload", nil);
 	task.setArguments(args);
-    task.launch(); 
+    task.launch();
 }

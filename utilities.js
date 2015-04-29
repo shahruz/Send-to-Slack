@@ -20,7 +20,10 @@ function createSelect(msg, items, selectedItemIndex){
   [alert setAccessoryView:accessory]
 
   var responseCode = [alert runModal]
-  var sel = [accessory indexOfSelectedItem]
-
-  return sel
+  if (responseCode == 1000) {
+	  var sel = [accessory indexOfSelectedItem]
+	  return sel
+  } else {
+	  return 0
+  }
 }
