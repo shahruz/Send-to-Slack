@@ -8,5 +8,7 @@ if (getActiveToken() == false) {
 var userNames = getUserNames()
 var userIDs = getUserIDs()
 var choice = createSelect('Choose a user...', userNames, nil)
-var userID = userIDs[choice]
-openIMAndSend(userID)
+if (choice != -1) {
+	var userID = userIDs[choice]
+	openIMAndSend(userID)
+}

@@ -107,7 +107,6 @@ function getGroupIDs() {
 
 
 function exportArtboardsAndSendTo(recipient) {
-	if (recipient == 0) return;
 	var loop = [selection objectEnumerator]
 	while (item = [loop nextObject]) {
 		if (item.className() == "MSArtboardGroup") {

@@ -9,4 +9,6 @@ var groupNames = getGroupNames()
 var groupIDs = getGroupIDs()
 var choice = createSelect('Choose a group...', groupNames, nil)
 
-exportArtboardsAndSendTo(groupIDs[choice])
+if (choice != -1) {
+	exportArtboardsAndSendTo(groupIDs[choice])
+}

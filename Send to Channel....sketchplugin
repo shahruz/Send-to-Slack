@@ -10,4 +10,6 @@ var channelIDs = getChannelIDs()
 
 var choice = createSelect('Choose a channel...', channelNames, nil)
 
-exportArtboardsAndSendTo(channelIDs[choice])
+if (choice != -1) {
+	exportArtboardsAndSendTo(channelIDs[choice])
+}

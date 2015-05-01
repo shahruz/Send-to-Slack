@@ -24,6 +24,6 @@ function createSelect(msg, items, selectedItemIndex){
 	  var sel = [accessory indexOfSelectedItem]
 	  return sel
   } else {
-	  return 0
+	  return -1
   }
 }
