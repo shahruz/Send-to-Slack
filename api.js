@@ -107,7 +107,7 @@ function getGroupIDs() {
 
 
 function exportArtboardsAndSendTo(recipient) {
-	var loop = [selection objectEnumerator]
+	var loop = [selection reverseObjectEnumerator]
 	while (item = [loop nextObject]) {
 		if (item.className() == "MSArtboardGroup") {
 			var path = NSTemporaryDirectory() + item.name() + ".png"
