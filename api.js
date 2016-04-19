@@ -122,5 +122,6 @@ function postFile(path, recipient) {
 	task.setLaunchPath("/usr/bin/curl");
 	var args = NSArray.arrayWithObjects("-F", "token=" + getActiveToken(), "-F", "file=@" + path, "-F", "channels=" + recipient, "https://slack.com/api/files.upload", nil);
 	task.setArguments(args);
-    task.launch();
+  task.launch();
+  task.waitUntilExit();
 }
