@@ -107,7 +107,7 @@ function getGroupIDs() {
 
 
 function exportArtboardsAndSendTo(recipient) {
-	var loop = [selection objectEnumerator]
+	var loop = [selection reverseObjectEnumerator]
 	while (item = [loop nextObject]) {
 		if (item.className() == "MSArtboardGroup") {
 			var path = NSTemporaryDirectory() + item.name() + ".png"
@@ -122,5 +122,6 @@ function postFile(path, recipient) {
 	task.setLaunchPath("/usr/bin/curl");
 	var args = NSArray.arrayWithObjects("-F", "token=" + getActiveToken(), "-F", "file=@" + path, "-F", "channels=" + recipient, "https://slack.com/api/files.upload", nil);
 	task.setArguments(args);
-    task.launch();
+  task.launch();
+  task.waitUntilExit();
 }
